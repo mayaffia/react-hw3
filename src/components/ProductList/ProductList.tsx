@@ -67,7 +67,7 @@ export default function ProductList({ category, name, inStock, darkTheme }: Prod
             marginTop: '-80px'
         }}
         >
-
+            {currentProducts.length === 0 && <div style={{ marginLeft: '500px'}}>Таких товаров не нашлось</div>}
             {currentProducts.map((product) => (
                 <ProductCard key={product.id} product={product} onClick={handleCardClick} />
             ))}
