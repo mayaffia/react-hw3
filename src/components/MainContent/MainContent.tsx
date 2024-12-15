@@ -14,6 +14,7 @@ import { Stack, TextField, FormControlLabel, Checkbox, Select, Button, InputAdor
 import ProductList from '../ProductList/ProductList';
 import { Close as CloseIcon } from '@mui/icons-material';
 import NavBar from '../NavBar/NavBar';
+import { MainContentProps } from '../../types/types';
 
 
 const drawerWidth = 240;
@@ -45,7 +46,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export default function PersistentDrawerLeft() {
+export default function MainContent({darkTheme} : MainContentProps) {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
@@ -179,17 +180,17 @@ export default function PersistentDrawerLeft() {
           </Select>
 
           <Button variant="contained" onClick={handleFilterSubmit} sx={{
-            backgroundColor: '#161a1d',
+            backgroundColor: darkTheme? '#f5f5f5' : '#161a1d',
           }}>
             Выполнить поиск
           </Button>
 
           <Button variant="outlined" onClick={handleResetFilters} sx={{
-            color: '#161a1d',
-            borderColor: '#161a1d',
+            color: darkTheme ? '#f5f5f5' : '#161a1d',
+            borderColor: darkTheme ? '#f5f5f5' : '#161a1d',
             '&:hover': {
-              borderColor: '#000',
-              backgroundColor: 'rgba(22, 26, 29, 0.08)',
+              borderColor: darkTheme ? '#bbbbbb' : '#000',
+              backgroundColor: darkTheme ? 'rgba(255, 255, 255, 0.08)' : 'rgba(22, 26, 29, 0.08)',
             },
           }}
           >
@@ -202,7 +203,7 @@ export default function PersistentDrawerLeft() {
 
       <Main open={open}>
         <DrawerHeader />
-        <ProductList category={submittedFilters.category} name={submittedFilters.productName} inStock={submittedFilters.inStock} />
+        <ProductList category={submittedFilters.category} name={submittedFilters.productName} inStock={submittedFilters.inStock} darkTheme={darkTheme} />
       </Main>
     </Box>
   );

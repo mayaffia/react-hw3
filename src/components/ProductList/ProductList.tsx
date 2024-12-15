@@ -4,7 +4,7 @@ import Modal from '../Modal/Modal';
 import { Pagination } from '@mui/material';
 import { Product, ProductListProps } from '../../types/types';
 
-export default function ProductList({ category, name, inStock }: ProductListProps) {
+export default function ProductList({ category, name, inStock, darkTheme }: ProductListProps) {
 
     const [products, setProducts] = useState<Product[]>([]);
 
@@ -56,12 +56,15 @@ export default function ProductList({ category, name, inStock }: ProductListProp
 
     const currentProducts = filtertedProducts.slice(indexOfFirstProduct, indexOfLastProduct);
 
+    console.log(darkTheme)
+
     return (
         <div style={{
             display: 'flex',
             flexWrap: 'wrap',
             gap: '40px',
             marginLeft: '60px',
+            marginTop: '-80px'
         }}
         >
 
@@ -76,7 +79,7 @@ export default function ProductList({ category, name, inStock }: ProductListProp
                 bottom: 0,
                 left: 0,
                 right: 0,
-                backgroundColor: 'white',
+                backgroundColor: darkTheme ? '#161a1d' : 'white',
                 padding: '10px',
                 zIndex: 1000,
                 display: 'flex',

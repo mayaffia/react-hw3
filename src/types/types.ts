@@ -23,8 +23,13 @@ export interface ProductListProps {
     category: string;
     name: string;
     inStock: boolean;
+    darkTheme: boolean;
 }
 
 export interface NavBarProps {
     handleDrawerOpen: () => void;
+}
+
+export interface MainContentProps {
+    darkTheme: boolean;
 }
