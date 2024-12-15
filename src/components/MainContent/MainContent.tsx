@@ -86,6 +86,7 @@ export default function PersistentDrawerLeft() {
       inStock: false,
       category: '',
     });
+    handleDrawerClose();
   };
 
   const handleResetProductName = () => {
